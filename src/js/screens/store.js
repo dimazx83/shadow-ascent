@@ -21,7 +21,10 @@ export async function render_store() {
   el.innerHTML = `
     <div class="screen_header">
       <div>
-        <h1 class="screen_title">🛒 <span>Store</span></h1>
+        <h1 class="screen_title">
+          <img class="screen_title_icon" src="/art/tabs/store.svg" alt="" aria-hidden="true">
+          <span>Store</span>
+        </h1>
         <div class="date_str text_muted">
           💰 <span class="text_gold text_mono">${player.gold}</span> Gold available
         </div>

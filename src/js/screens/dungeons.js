@@ -47,7 +47,10 @@ export async function render_dungeons() {
   el.innerHTML = `
     <div class="screen_header">
       <div>
-        <h1 class="screen_title">🏰 <span>Dungeons</span></h1>
+        <h1 class="screen_title">
+          <img class="screen_title_icon" src="/art/tabs/dungeons.svg" alt="" aria-hidden="true">
+          <span>Dungeons</span>
+        </h1>
         <div class="date_str text_muted">
           🗝️ ${player.dungeon_keys} keys remaining
         </div>

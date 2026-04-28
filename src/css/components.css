@@ -457,7 +457,12 @@
   position: relative;
 }
 
-.stat_icon { font-size: 18px; }
+.stat_icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  object-fit: contain;
+}
 
 .stat_label {
   font-size: 11px;

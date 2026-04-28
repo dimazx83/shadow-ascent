@@ -25,11 +25,11 @@ const RANK_COLORS = {
 }
 
 const STAT_INFO = {
-  str: { label: 'STR', full: 'Strength',     icon: '⚔️',  desc: '+3% Gold per point'         },
-  int: { label: 'INT', full: 'Intelligence', icon: '📖',  desc: '+3% XP per point'            },
-  agi: { label: 'AGI', full: 'Agility',      icon: '💨',  desc: '-2% Penalty damage per point' },
-  vit: { label: 'VIT', full: 'Vitality',     icon: '❤️',  desc: '+20 Max HP per point'        },
-  sen: { label: 'SEN', full: 'Sense',        icon: '👁️',  desc: '+5% Hidden quest chance'     },
+  str: { label: 'STR', full: 'Strength',     icon: '/art/stats/str.svg', desc: '+3% Gold per point'         },
+  int: { label: 'INT', full: 'Intelligence', icon: '/art/stats/int.svg', desc: '+3% XP per point'            },
+  agi: { label: 'AGI', full: 'Agility',      icon: '/art/stats/agi.svg', desc: '-2% Penalty damage per point' },
+  vit: { label: 'VIT', full: 'Vitality',     icon: '/art/stats/vit.svg', desc: '+20 Max HP per point'        },
+  sen: { label: 'SEN', full: 'Sense',        icon: '/art/stats/sen.svg', desc: '+5% Hidden quest chance'     },
 }
 
 // ── Main render ──────────────────────────────────────
@@ -70,7 +70,10 @@ export async function render_stats() {
 
   el.innerHTML = `
     <div class="screen_header">
-      <h1 class="screen_title">⚡ <span>Hunter</span> Profile</h1>
+      <h1 class="screen_title">
+        <img class="screen_title_icon" src="/art/tabs/stats.svg" alt="" aria-hidden="true">
+        <span>Hunter</span> Profile
+      </h1>
       ${debuff.debuffed ? `<span class="debuff_badge">DEBUFFED</span>` : ''}
     </div>
 
@@ -155,7 +158,7 @@ export async function render_stats() {
         <div class="stats_grid">
           ${Object.entries(STAT_INFO).map(([key, info]) => `
             <div class="stat_col">
-              <span class="stat_icon">${info.icon}</span>
+              <img class="stat_icon" src="${info.icon}" alt="" aria-hidden="true">
               <span class="stat_label">${info.label}</span>
               <span class="stat_val" style="color:${_stat_color(key)}">${player[key]}</span>
               <span class="stat_desc_tooltip">${info.desc}</span>

@@ -160,6 +160,9 @@ body {
 }
 
 .screen_title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -168,6 +171,14 @@ body {
 }
 
 .screen_title span { color: var(--purple); }
+
+.screen_title_icon {
+  width: 26px;
+  height: 26px;
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}
 
 /* ── System Panel — sharp rectangles ────────────────── */
 .system_panel {

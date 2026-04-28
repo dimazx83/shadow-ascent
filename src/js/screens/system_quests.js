@@ -31,7 +31,10 @@ export async function render_system_quests() {
   el.innerHTML = `
     <div class="screen_header">
       <div>
-        <h1 class="screen_title">📜 <span>System</span> Quests</h1>
+        <h1 class="screen_title">
+          <img class="screen_title_icon" src="/art/tabs/quests.svg" alt="" aria-hidden="true">
+          <span>System</span> Quests
+        </h1>
         <div class="date_str text_muted">${active.length} active · ${completed.length} completed</div>
       </div>
       <button class="add_btn" id="sq_add_btn">＋</button>

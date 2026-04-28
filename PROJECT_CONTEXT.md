@@ -185,6 +185,73 @@ npm run build && npm run preview -- --host
 
 ---
 
+## Deploying Updates Without Losing PWA Data
+
+The production app is deployed by Vercel from GitHub. The iPhone PWA stores all
+game data locally in IndexedDB, so normal source-code deploys do not clear stats,
+quests, habits, inventory, achievements, or dungeon progress.
+
+### Normal Update Flow
+
+```bash
+# from /Users/dimazx83/Desktop/shadow-ascent
+
+# 1. Verify locally
+npm run build
+
+# 2. Commit source changes
+git status
+git add .
+git commit -m "Describe the update"
+
+# 3. Push to GitHub
+git push
+```
+
+Vercel automatically builds and deploys after the push. Check the Vercel
+dashboard for a successful deployment, then open the installed PWA on iPhone.
+The service worker uses auto-update behavior, so the installed app should pick up
+new assets/code without requiring a data reset.
+
+If the iPhone still shows an old version:
+- Fully close and reopen the installed PWA.
+- Open the HTTPS Vercel URL in Safari once, then reopen the Home Screen app.
+- Wait a minute for the service worker update to finish.
+- Avoid clearing Safari website data unless you intentionally want a full wipe.
+
+### What Preserves Existing Stats
+
+Safe changes:
+- UI/CSS changes
+- New art assets
+- Gameplay logic fixes
+- New screens or panels
+- Store catalog additions, if existing item identifiers remain stable
+- Achievement catalog additions, if existing `achievement_id` values remain stable
+
+Risky changes that need a migration plan:
+- Changing `new Dexie('shadow_ascent')` in `src/js/modules/db.js`
+- Renaming tables or primary keys
+- Clearing tables on app init
+- Changing existing catalog identifiers used by inventory
+- Changing existing `achievement_id` values
+- Moving production to a different domain/origin
+
+Data-wiping actions:
+- Stats → Danger Zone → Reset All Data
+- Deleting the Home Screen app
+- Clearing Safari website data for the Vercel domain
+- Changing the IndexedDB database name
+- Installing/opening the app from a different origin, such as a new domain
+
+### If Schema Changes Are Needed
+
+Use a Dexie version migration instead of wiping data. Add a new `db.version(n)`
+schema and migration path in `src/js/modules/db.js`, then test on an existing
+installed PWA before relying on the change.
+
+---
+
 ## DB Reset
 
 To wipe all data and start fresh:

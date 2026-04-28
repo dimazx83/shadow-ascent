@@ -35,7 +35,10 @@ export async function render_daily_quests() {
   el.innerHTML = `
     <div class="screen_header">
       <div>
-        <h1 class="screen_title">⚔️ <span>Daily</span> Quests</h1>
+        <h1 class="screen_title">
+          <img class="screen_title_icon" src="/art/tabs/daily.svg" alt="" aria-hidden="true">
+          <span>Daily</span> Quests
+        </h1>
         <div class="date_str text_muted">${today}</div>
       </div>
       <button class="add_btn" id="dq_add_btn">＋</button>

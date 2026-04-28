@@ -35,7 +35,10 @@ export async function render_habits() {
   el.innerHTML = `
     <div class="screen_header">
       <div>
-        <h1 class="screen_title">🔄 <span>Habits</span></h1>
+        <h1 class="screen_title">
+          <img class="screen_title_icon" src="/art/tabs/habits.svg" alt="" aria-hidden="true">
+          <span>Habits</span>
+        </h1>
         <div class="date_str text_muted">${habits.length} habits tracked</div>
       </div>
       <button class="add_btn" id="h_add_btn">＋</button>
