@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="theme-color" content="#0a0a0f" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/base.css" />
+  <link rel="stylesheet" href="/src/css/components.css" />
+  <title>Shadow Ascent</title>
+</head>
+
+<body>
+  <div id="app">
+
+    <div id="screen_container">
+      <section class="screen active" id="screen_daily_quests"></section>
+      <section class="screen" id="screen_system_quests"></section>
+      <section class="screen" id="screen_habits"></section>
+      <section class="screen" id="screen_stats"></section>
+      <section class="screen" id="screen_dungeons"></section>
+      <section class="screen" id="screen_store"></section>
+    </div>
+
+    <nav id="tab_bar">
+      <button class="tab_btn active" data-tab="daily_quests">
+        <img class="tab_icon" src="/art/tabs/daily.svg" alt="" aria-hidden="true">
+        <span class="tab_label">Daily</span>
+      </button>
+      <button class="tab_btn" data-tab="system_quests">
+        <img class="tab_icon" src="/art/tabs/quests.svg" alt="" aria-hidden="true">
+        <span class="tab_label">Quests</span>
+      </button>
+      <button class="tab_btn" data-tab="habits">
+        <img class="tab_icon" src="/art/tabs/habits.svg" alt="" aria-hidden="true">
+        <span class="tab_label">Habits</span>
+      </button>
+      <button class="tab_btn" data-tab="stats">
+        <img class="tab_icon" src="/art/tabs/stats.svg" alt="" aria-hidden="true">
+        <span class="tab_label">Stats</span>
+      </button>
+      <button class="tab_btn" data-tab="dungeons">
+        <img class="tab_icon" src="/art/tabs/dungeons.svg" alt="" aria-hidden="true">
+        <span class="tab_label">Dungeons</span>
+      </button>
+      <button class="tab_btn" data-tab="store">
+        <img class="tab_icon" src="/art/tabs/store.svg" alt="" aria-hidden="true">
+        <span class="tab_label">Store</span>
+      </button>
+    </nav>
+
+  </div>
+  <script type="module" src="/src/js/app.js"></script>
+</body>
+
+</html>

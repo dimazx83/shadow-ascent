@@ -1,0 +1,259 @@
+@import './variables.css';
+
+/* ── Reset ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  height: 100%;
+  min-height: 100%;
+  background: var(--bg-base);
+  overflow: hidden;
+}
+
+body {
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── App Shell ──────────────────────────────────────── */
+#app {
+  display: flex;
+  flex-direction: column;
+  height: var(--app-height, 100dvh);
+  min-height: var(--app-height, 100dvh);
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translateX(-50%);
+  cursor: pointer;
+  overflow: hidden;
+  background: var(--bg-base);
+}
+
+/* ── Screens ────────────────────────────────────────── */
+#screen_container {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-top: var(--safe-top);
+  padding-bottom: calc(var(--tab-bar-height) + var(--bottom-inset) + 8px);
+}
+
+#screen_container::-webkit-scrollbar { display: none; }
+
+.screen {
+  display: none;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 16px 14px;
+  animation: screen_in var(--transition-med) ease;
+}
+
+.screen.active { display: flex; }
+
+@keyframes screen_in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Tab Bar ────────────────────────────────────────── */
+#tab_bar {
+  position: fixed;
+  bottom: var(--bottom-inset);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  height: var(--tab-bar-height);
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-dim);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding-top: 8px;
+  z-index: 100;
+}
+
+#tab_bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: var(--bottom-inset);
+  background: var(--bg-surface);
+}
+
+.tab_btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  min-width: 52px;
+  position: relative;
+}
+
+.tab_btn .tab_icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+  object-fit: contain;
+  filter: grayscale(1) opacity(0.35);
+  transition: var(--transition-fast);
+}
+
+.tab_btn .tab_label {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+}
+
+.tab_btn.active .tab_icon  { filter: grayscale(0) opacity(1); }
+.tab_btn.active .tab_label { color: var(--purple); }
+
+/* active indicator line on top */
+.tab_btn.active::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 2px;
+  background: var(--purple);
+}
+
+/* ── Screen Header ──────────────────────────────────── */
+.screen_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.screen_title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.screen_title span { color: var(--purple); }
+
+/* ── System Panel — sharp rectangles ────────────────── */
+.system_panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 0;
+  padding: 14px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/* left accent line on panels */
+.system_panel::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--purple);
+}
+
+/* ── Section label — bracketed style ───────────────── */
+.section_label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.section_label::before { content: '[ '; color: var(--purple); }
+.section_label::after  { content: ' ]'; color: var(--purple); }
+
+/* ── Scroll area ────────────────────────────────────── */
+.scroll_area {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Empty state ────────────────────────────────────── */
+.empty_state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 48px 24px;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  border: 1px dashed var(--border-dim);
+}
+
+.empty_icon { font-size: 40px; opacity: 0.25; }
+
+/* ── Utility ────────────────────────────────────────── */
+.text_blue   { color: var(--blue); }
+.text_purple { color: var(--purple); }
+.text_gold   { color: var(--gold); }
+.text_red    { color: var(--hp-red); }
+.text_muted  { color: var(--text-muted); }
+.text_mono   { font-family: var(--font-mono); }
+
+/* prevent iOS double-tap zoom */
+button, input, select {
+  touch-action: manipulation;
+}
+
+/* prevent keyboard from breaking modal layout */
+.modal_overlay {
+  align-items: flex-end;
+  padding-bottom: 0;
+}
+
+@supports (-webkit-touch-callout: none) {
+  /* iOS only */
+  .modal_panel {
+    max-height: 75dvh;
+  }
+}
+
+/* iOS keyboard viewport fix */
+input, select, textarea {
+  font-size: 16px !important;
+}

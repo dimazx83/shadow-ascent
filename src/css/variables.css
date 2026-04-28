@@ -1,0 +1,59 @@
+:root {
+  /* backgrounds */
+  --bg-base:        #0a0a12;
+  --bg-surface:     #0d0d18;
+  --bg-card:        #11111e;
+  --bg-card-hover:  #16162a;
+
+  /* brand colors */
+  --blue:           #4fc3f7;
+  --blue-dim:       #0d2a3d;
+  --purple:         #9b6dff;
+  --purple-dim:     #1a0d3d;
+  --gold:           #fbbf24;
+  --gold-dim:       #2d1f00;
+
+  /* status */
+  --hp-red:         #ef4444;
+  --hp-red-dim:     #2d0a0a;
+  --xp-green:       #22c55e;
+  --xp-green-dim:   #0a2d18;
+
+  /* rank colors */
+  --rank-e:         #9ca3af;
+  --rank-d:         #34d399;
+  --rank-c:         #60a5fa;
+  --rank-b:         #9b6dff;
+  --rank-a:         #f59e0b;
+  --rank-s:         #ef4444;
+
+  /* text */
+  --text-primary:   #e8e8ff;
+  --text-secondary: #a6a6c8;
+  --text-muted:     #7d7d9f;
+
+  /* borders — sharp, no glow */
+  --border-dim:     #1e1e35;
+  --border-blue:    #4fc3f740;
+  --border-purple:  #9b6dff40;
+
+  /* glows — much more subtle, only for key accents */
+  --glow-blue:      0 0 0 1px #4fc3f720;
+  --glow-purple:    0 0 0 1px #9b6dff20;
+  --glow-gold:      0 0 0 1px #fbbf2420;
+  --glow-red:       0 0 0 1px #ef444420;
+
+  /* layout */
+  --tab-bar-height: 64px;
+  --safe-top:       env(safe-area-inset-top, 0px);
+  --safe-bottom:    env(safe-area-inset-bottom, 0px);
+  --bottom-inset:   env(safe-area-inset-bottom, 0px);
+
+  /* typography */
+  --font-ui:        'Rajdhani', 'Barlow Condensed', system-ui, sans-serif;
+  --font-mono:      'Share Tech Mono', 'Courier New', monospace;
+
+  /* transitions */
+  --transition-fast: 150ms ease;
+  --transition-med:  300ms ease;
+}
